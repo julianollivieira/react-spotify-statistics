@@ -1,0 +1,71 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero .text {
+  flex: 3;
+  margin-right: 10px;
+}
+
+.hero .input {
+  flex: 1;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero .input p {
+  padding-top: 10px;
+  white-space: nowrap;
+  margin: 0px;
+  color: grey;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.hero .input div {
+  width: 100%;
+  height: 50%;
+}
+
+.hero .input div button, .hero .input div select {
+  height: 50px;
+  width: 100%;
+}
+
+.hero .input select {
+  background-color: #a600ff;
+  color: white;
+}
+
+.hero .input div button {
+  background-color: #6f00ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px 0px 20px;
+}
+
+.hero .input div button img {
+  height: 25px;
+}
+
+.results-container {
+  margin-top: 30px;
+}
+
+.results-container h4 {
+  text-align: center;
+}
+
+.results-container .row {
+  display: flex;
+}
+
+.results-container .row .column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}

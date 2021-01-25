@@ -1,0 +1,27 @@
+.list-item {
+    display: flex;
+    align-items: center;
+    height: 100px;
+}
+
+.list-item p {
+    margin: 0px;
+}
+
+.list-item h4 {
+    text-align: center;
+    margin: 0px;
+    width: 100px;
+}
+
+.img-container {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-item img {
+    height: 60px;
+    width: 60px;
+}
