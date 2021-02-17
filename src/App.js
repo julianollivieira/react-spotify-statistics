@@ -1,7 +1,53 @@
 import './App.css';
 import ListItem from './components/ListItem';
+import React, { useState, useEffect } from 'react';
 
 function App() {
+
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [items, setItems] = useState([]);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    const spotifyAuthBaseURL = 'https://accounts.spotify.com/authorize';
+    const spotifyAuthQueryParams = {
+        client_id: 'd26a842e463f4ec8ab57a295f0b52ead',
+        response_type: 'token',
+        redirect_uri: 'http://localhost:3000',
+        state: 'aPReHAjWiqeBEPZUcgAvFwvpclu5sI7M',
+        scope: 'user-top-read',
+        show_dialog: 'false'
+    }
+
+    const fetchSpotifyStat = url => {
+        fetch(url)
+            .then(res => res.json())
+            .then(result => {
+                setIsLoaded(true);
+                setItems(result);
+            }, error => {
+                setIsLoaded(true);
+                setError(error);
+            });
+    }
+
+    const handleClick = e => {
+        e.preventDefault();
+        
+        let queryParams = new URLSearchParams();
+        for (const key in spotifyAuthQueryParams) {
+            queryParams.append(key, spotifyAuthQueryParams[key]);
+        }
+        
+        window.location.href = `${spotifyAuthBaseURL}?${queryParams.toString()}`;
+    }
+
+    useEffect(() => {
+        if (window.location.hash) {
+            setIsAuthenticated(true);
+        }
+    }, []);
+
     return (
         <main>
             <div className="hero">
@@ -12,7 +58,7 @@ function App() {
                 <div className="input">
                     <div>
                         <p>Sign in with Spotify</p>
-                        <button>Sign in<img src="Spotify_Icon_RGB_White.png" alt="Spotify Icon" /></button>
+                        <button onClick={handleClick}>Sign in<img src="Spotify_Icon_RGB_White.png" alt="Spotify Icon" /></button>
                     </div>
                     <div>
                         <p>Select a time period</p>
